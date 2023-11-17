@@ -1,0 +1,91 @@
+/* fira-code-regular - latin */
+@font-face {
+
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/fira-code-v22-latin-regular.woff2') format('woff2');
+}
+
+/*--------------------*/
+/*--------------------*/
+/*-----Body styles----*/
+/*--------------------*/
+/*--------------------*/
+
+body{
+	margin: 0px;
+	font-family: Fira Code, Arial, sans-serif;
+	font-size: 20px;
+	line-height: 30px;
+}
+h2{
+	font-size: 35px;
+	color: indianred;
+	margin: 40px 0px 10px;
+}
+
+/*--------------------*/
+/*--------------------*/
+/*----Header styles---*/
+/*--------------------*/
+/*--------------------*/
+
+header{
+	background-color: lightgoldenrodyellow;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	border-bottom: 5px groove red;
+}
+header h1{
+	color: red;
+	font-size: 50px;
+
+}
+header img{
+	border-radius: 200px;
+	width: 300px;
+	border: 20px solid red;
+}
+
+/*--------------------*/
+/*--------------------*/
+/*-----Main styles----*/
+/*--------------------*/
+/*--------------------*/
+
+main{
+	max-width: 800px;
+	margin:0px auto;
+	padding: 0px 20px;
+}
+
+main img{
+	max-width: 100%;
+}
+main p.img-txt{
+	font-style: italic;
+	color: lightgray;
+	margin-top: 0px;
+}
+
+main ul li{
+	list-style: square;
+
+}
+
+/*--------------------*/
+/*--------------------*/
+/*---Footer styles----*/
+/*--------------------*/
+/*--------------------*/
+
+footer{
+	background-color: lightgoldenrodyellow;
+	text-align: center;
+	color: red;
+	padding: 20px 0px;
+	border-top: 5px groove red;
+
+}
