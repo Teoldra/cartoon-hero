@@ -64,6 +64,34 @@ main{
 main img{
 	max-width: 100%;
 }
+
+/*--------------------*/
+/*-----Accoordion-----*/
+/*--------------------*/
+
+main .accordion{
+	background-color: lightgoldenrodyellow;
+	color: black;
+	width: 100%;
+	padding: 20px 5px;
+	text-align: left;
+	border: none;
+	outline: none;
+	transition: 0,5s;
+}
+
+main .active, main .accordion:hover {
+	background-color: #ccc;
+
+}
+
+main .panel {
+	padding: 0 18px;
+	background-color: white;
+	display: none;
+	overflow: hidden;
+}
+
 main p.img-txt{
 	font-style: italic;
 	color: lightgray;
