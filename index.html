@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dogs</title>
+	<title>NieR Atomata</title>
 	<link rel="icon" href="img/dog-fav-icon.png">
 	<link rel="stylesheet" type="text/css" href="css/index-css.css">
 
@@ -12,10 +12,27 @@
 
 	<!-- Header element -->
 	<header>
-		<img src="img/dog-avatar.jpg">
-		<h1>Dogs</h1>
+		<div class="headerSlider">
+			<div class="slides fade">
+				<img src="img/nier-automata-music-concert.jpg">
+			</div>
+			<div class="slides fade">
+				<img src="img/nier-automata.jpg">
+			</div>
+			<div class="slides fade">
+				<img src="img/2b-92-a2.jpg">
+			</div>
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
 	</header>
 
+<!-- The dots/circles -->
+	<div style="text-align:center">
+		<span class="dot" onclick="currentSlide(1)"></span>
+		<span class="dot" onclick="currentSlide(2)"></span>
+		<span class="dot" onclick="currentSlide(3)"></span>
+  	</div>
 	<!-- Main element -->
 	<main>
 		<h2>About Dogs</h2>
@@ -25,21 +42,36 @@
 
 	<!-- Accordion -->
 		<!-- Inhalt 1 -->		
-		<button class="accordion">Section 1</button>
+		<button class="accordion">2B</button>
 		<div class="panel">
-			<p>Hier kommt der Inhalt rein</p>
+			<div>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum voluptatum debitis ullam commodi alias id magnam non hic cum. Id ducimus, optio rem deleniti ea ipsa soluta ipsum non!</p>
+			</div>
+			<div>
+				<img src="img/2b-dust-art.jpg" alt="2b-dust-art">
+			</div>
 		</div>
 
 		<!-- Inhalt 2 -->		
-		<button class="accordion">Section 1</button>
+		<button class="accordion">9S</button>
 		<div class="panel">
-			<p>Hier kommt der Inhalt rein</p>
+			<div>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum voluptatum debitis ullam commodi alias id magnam non hic cum. Id ducimus, optio rem deleniti ea ipsa soluta ipsum non!</p>
+			</div>
+			<div>
+				<img src="img/9s-art.jpg" alt="2b-dust-art">
+			</div>
 		</div>
 
 		<!-- Inhalt 2 -->		
-		<button class="accordion">Section 1</button>
+		<button class="accordion">A2</button>
 		<div class="panel">
-			<p>Hier kommt der Inhalt rein</p>
+			<div>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum voluptatum debitis ullam commodi alias id magnam non hic cum. Id ducimus, optio rem deleniti ea ipsa soluta ipsum non!</p>
+			</div>
+			<div>
+				<img src="img/a2-art.jpg" alt="2b-dust-art">
+			</div>
 		</div>
 		
 
