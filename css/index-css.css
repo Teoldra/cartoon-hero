@@ -26,6 +26,7 @@ h2{
 }
 button{
 	font-family: Fira Code, Arial, sans-serif;
+	font-size: 25px;
 }
 /*--------------------*/
 /*--------------------*/
@@ -34,7 +35,6 @@ button{
 /*--------------------*/
 
 
-  
 /*--------------------*/
 /*--------------------*/
 /*----Header Slider---*/
@@ -136,7 +136,6 @@ main img{
 /*--------------------*/
 
 main .accordion{
-	font-size: 30px;
 	background-color: lightgoldenrodyellow;
 	color: black;
 	width: 100%;
@@ -149,12 +148,10 @@ main .accordion{
 }
 
 main .accordion::after{
-	font-size: 30px;
 	padding-right: 20px;
 	content: "+";
 }
 main .active::after{
-	font-size: 30px;
 	padding-right: 20px;
 	content: "-";
 
