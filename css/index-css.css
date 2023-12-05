@@ -21,10 +21,12 @@ body{
 }
 h2{
 	font-size: 35px;
-	color: indianred;
+	color: darkgray;
 	margin: 40px 0px 10px;
 }
-
+button{
+	font-family: Fira Code, Arial, sans-serif;
+}
 /*--------------------*/
 /*--------------------*/
 /*----Header styles---*/
@@ -59,7 +61,7 @@ header .slides img{
 .prev, .next {
 	cursor: pointer;
 	position: absolute;
-	top: clamp(20vh, 35%, 70vh) ;
+	top: clamp(10vh, 35%, 35vh) ;
 	width: auto;
 	margin-top: -22px;
 	padding: 16px;
@@ -70,6 +72,8 @@ header .slides img{
 	border-radius: 0 3px 3px 0;
 	user-select: none;
   }
+	
+
   /* Position the "next button" to the right */
 .next {
 	right: 0;
@@ -132,6 +136,7 @@ main img{
 /*--------------------*/
 
 main .accordion{
+	font-size: 30px;
 	background-color: lightgoldenrodyellow;
 	color: black;
 	width: 100%;
@@ -144,9 +149,13 @@ main .accordion{
 }
 
 main .accordion::after{
+	font-size: 30px;
+	padding-right: 20px;
 	content: "+";
 }
 main .active::after{
+	font-size: 30px;
+	padding-right: 20px;
 	content: "-";
 
 
@@ -197,6 +206,16 @@ main ul li{
 
 }
 
+@media (max-width:1024px) {
+	main .panel{
+		flex-direction: column;
+	}
+	main .panel div{
+		width: 100%;
+	}
+	
+}
+
 /*--------------------*/
 /*--------------------*/
 /*---Footer styles----*/
@@ -206,8 +225,8 @@ main ul li{
 footer{
 	background-color: lightgoldenrodyellow;
 	text-align: center;
-	color: red;
+	color: black;
 	padding: 20px 0px;
-	border-top: 5px groove red;
+	border-top: 10px groove black;
 
 }
