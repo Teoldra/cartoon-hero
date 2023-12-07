@@ -1,4 +1,10 @@
 $(document).ready(function () {
+  Accordion();
+  Slider();
+});
+
+function Accordion(){
+
   $(".accordion").click(function () {
     var acc = $(this);
     var panel = $(this).next();
@@ -13,76 +19,57 @@ $(document).ready(function () {
       panel.addClass("show");
       acc.addClass("active");
     }
-  
+    
   });
-  justin();
-});
-
-
-let index = 1;
-$(".prev").click(function () {
-  index++;
-  justin();
-})
-
-
-/*
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+function Slider(){
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("slides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {
-    slideIndex = 1
-  }
-  if (n < 1) {
-    slideIndex = slides.length
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-}
-*/
+  let slides = $(".slides").toArray();
+  let currentDot = $(".dot").toArray();
+  let index = 0;
+  $(slides[0]).css("display","block");
+  $(currentDot[0]).addClass("active");
+
+  $(".next").click(function(){
 
 
-
-
-
-
-
-
-
-
-
-
-
-function justin(){
-  let slides = $(".slides").toArray()
-  let slideZaehler = 0;
-  slides.forEach((slide) => {
-    slideZaehler++;
-    if(index == zaehler){
-      $(slide).show();
-    }else{
-      $(slide).hide();
-      }
+    
+    if(index +1  < slides.length){
+      $(currentDot[index]).removeClass("active")
+      $(slides[index]).css("display","none")
+      index++;
+      $(currentDot[index]).addClass("active")
+      $(slides[index]).css("display","block")
     }
-  )
+    else{
+      $(currentDot[index]).removeClass("active")
+      $(slides[index]).css("display","none")
+      index = 0
+      $(currentDot[index]).addClass("active")
+      $(slides[index]).css("display","block")
+    }
+
+  });
+
+  $(".prev").click(function(){
+
+    if(index  > 0){
+      $(currentDot[index]).removeClass("active")
+      $(slides[index]).css("display","none")
+      index--;
+      $(currentDot[index]).addClass("active")
+      $(slides[index]).css("display","block")
+    }
+    else{
+      $(currentDot[index]).removeClass("active")
+      $(slides[index]).css("display","none")
+      index = 2
+      $(currentDot[index]).addClass("active")
+      $(slides[index]).css("display","block")
+    }
+  });
+
+  
 }
+
