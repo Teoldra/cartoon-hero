@@ -154,11 +154,14 @@ main .accordion{
 
 main .accordion::after{
 	padding-right: 20px;
-	content: "+";
+	content: url("../img/arrow.svg");
+	transition: 0.4s;
 }
 main .active::after{
-	padding-right: 20px;
-	content: "-";
+
+	transform: rotate(-180deg);
+	transform-origin:40% 45%;
+	
 
 
 }
