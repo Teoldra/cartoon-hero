@@ -1,23 +1,32 @@
-//Accordion
-
-var acc = document.getElementsByClassName("accordion");
-var i;
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Aus uns einklappen. Gelöst über Max Height */
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
+$(document).ready(function () {
+  $(".accordion").click(function () {
+    var acc = $(this);
+    var panel = $(this).next();
+    if (panel.hasClass('show')) {
+      panel.removeClass('show');
+      acc.removeClass("active");
     } else {
-      panel.style.maxHeight = "60vh";
+      var active_panel = $('.panel.show');
+      var active_acc = $(".accordion.active");
+      active_acc.removeClass("active");
+      active_panel.removeClass('show');
+      panel.addClass("show");
+      acc.addClass("active");
     }
+  
   });
-}
+  justin();
+});
 
+
+let index = 1;
+$(".prev").click(function () {
+  index++;
+  justin();
+})
+
+
+/*
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -47,6 +56,33 @@ function showSlides(n) {
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+function justin(){
+  let slides = $(".slides").toArray()
+  let slideZaehler = 0;
+  slides.forEach((slide) => {
+    slideZaehler++;
+    if(index == zaehler){
+      $(slide).show();
+    }else{
+      $(slide).hide();
+      }
+    }
+  )
 }
