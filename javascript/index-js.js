@@ -26,19 +26,21 @@ function Slider() {
   let slides = $(".slides").toArray();
   let currentDot = $(".dot").toArray();
   let index = 0;
-  function ShowSlide(){                         //Blendet Slide ein anhand des aktuellen Index 
-    $(slides[index]).show();
-    $(currentDot[index]).addClass("active");
-  }
+
   function HideSlide(){                         //Blendet alle Slides aus
     $(".slides").hide();
     $(".dot").removeClass("active");
   }
-
+  function ShowSlide(){                         //Blendet Slide ein anhand des aktuellen Index 
+    $(slides[index]).show();
+    $(currentDot[index]).addClass("active");
+  }
   function NextSlide(){
     HideSlide();
     ShowSlide();
   }
+
+  //Einblendung des Ersten Slides bei seiten aufruf
   ShowSlide();
 
   //Hier Startet die Click Funktion!
