@@ -3,73 +3,59 @@ $(document).ready(function () {
   Slider();
 });
 
-function Accordion(){
+function Accordion() {
 
   $(".accordion").click(function () {
-    var acc = $(this);
-    var panel = $(this).next();
-    if (panel.hasClass('show')) {
-      panel.removeClass('show');
-      acc.removeClass("active");
-    } else {
-      var active_panel = $('.panel.show');
-      var active_acc = $(".accordion.active");
-      active_acc.removeClass("active");
-      active_panel.removeClass('show');
-      panel.addClass("show");
-      acc.addClass("active");
+
+    if($(this).hasClass("active")){
+      $(this).removeClass("active");
+      $(this).next().removeClass("show");
+    } 
+
+    else{
+      $(".panel").removeClass("show");
+      $(".accordion").removeClass("active");
+      $(this).addClass("active");
+      $(this).next().addClass("show");
     }
-    
   });
 }
 
-function Slider(){
+function Slider() {
 
   let slides = $(".slides").toArray();
   let currentDot = $(".dot").toArray();
   let index = 0;
-  $(slides[0]).css("display","block");
-  $(currentDot[0]).addClass("active");
+  function ShowSlide(){                         //Blendet Slide ein anhand des aktuellen Index 
+    $(slides[index]).show();
+    $(currentDot[index]).addClass("active");
+  }
+  function HideSlide(){                         //Blendet alle Slides aus
+    $(".slides").hide();
+    $(".dot").removeClass("active");
+  }
 
-  $(".next").click(function(){
+  function NextSlide(){
+    HideSlide();
+    ShowSlide();
+  }
+  ShowSlide();
 
+  //Hier Startet die Click Funktion!
 
-    
-    if(index +1  < slides.length){
-      $(currentDot[index]).removeClass("active")
-      $(slides[index]).css("display","none")
-      index++;
-      $(currentDot[index]).addClass("active")
-      $(slides[index]).css("display","block")
-    }
-    else{
-      $(currentDot[index]).removeClass("active")
-      $(slides[index]).css("display","none")
+  $(".next").click(function () {                //Click auf den Next Button
+    index++;
+    if (index + 1 > $(".slides").length) {      //Zurücksetzen des Index wenn letztes Element Erreicht
       index = 0
-      $(currentDot[index]).addClass("active")
-      $(slides[index]).css("display","block")
     }
-
+    NextSlide();
   });
 
-  $(".prev").click(function(){
-
-    if(index  > 0){
-      $(currentDot[index]).removeClass("active")
-      $(slides[index]).css("display","none")
-      index--;
-      $(currentDot[index]).addClass("active")
-      $(slides[index]).css("display","block")
+  $(".prev").click(function () {                //Click auf den Prev Button
+    index--;
+    if (index < 0) {                            //Zurücksetzen des Index wenn erstes Element Erreicht
+      index = slides.length - 1;
     }
-    else{
-      $(currentDot[index]).removeClass("active")
-      $(slides[index]).css("display","none")
-      index = 2
-      $(currentDot[index]).addClass("active")
-      $(slides[index]).css("display","block")
-    }
+    NextSlide();
   });
-
-  
 }
-

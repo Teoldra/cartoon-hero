@@ -1,10 +1,10 @@
 /* fira-code-regular - latin */
 @font-face {
 
-  font-family: 'Fira Code';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/fira-code-v22-latin-regular.woff2') format('woff2');
+	font-family: 'Fira Code';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/fira-code-v22-latin-regular.woff2') format('woff2');
 }
 
 /*--------------------*/
@@ -13,21 +13,24 @@
 /*--------------------*/
 /*--------------------*/
 
-body{
+body {
 	margin: 0px;
 	font-family: Fira Code, Arial, sans-serif;
 	font-size: 20px;
 	line-height: 30px;
 }
-h2{
+
+h2 {
 	font-size: 35px;
 	color: darkgray;
 	margin: 40px 0px 10px;
 }
-button{
+
+button {
 	font-family: Fira Code, Arial, sans-serif;
 	font-size: 25px;
 }
+
 /*--------------------*/
 /*--------------------*/
 /*----Header styles---*/
@@ -40,7 +43,7 @@ button{
 /*----Header Slider---*/
 /*--------------------*/
 /*--------------------*/
-header{
+header {
 	max-height: 75vh;
 	min-height: 20vh;
 	overflow: hidden;
@@ -52,19 +55,22 @@ header .headerSlider {
 	position: relative;
 	text-align: center;
 
-  }
-  .slides{
-	display: none;
-  }
+}
 
-header .slides img{
+.slides {
+	display: none;
+}
+
+header .slides img {
 	width: 100%;
 	overflow: hidden;
 }
-.prev, .next {
+
+.prev,
+.next {
 	cursor: pointer;
 	position: absolute;
-	top: clamp(10vh, 35%, 35vh) ;
+	top: clamp(10vh, 35%, 35vh);
 	width: auto;
 	margin-top: -22px;
 	padding: 16px;
@@ -74,50 +80,59 @@ header .slides img{
 	transition: 0.6s ease;
 	border-radius: 0 3px 3px 0;
 	user-select: none;
-  }
-	
+}
 
-  /* Position the "next button" to the right */
+
+/* Position the "next button" to the right */
 .next {
 	right: 0;
 
-  }
+}
+
 .prev {
 	left: 0;
 
-  }
-  
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover, .next:hover {
-	background-color: rgba(0,0,0,0.8);
-  }
+}
 
-  /* The dots/bullets/indicators */
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* The dots/bullets/indicators */
 .dot {
 	cursor: pointer;
 	height: 15px;
 	width: 15px;
 	margin: 0 2px;
-	background-color: #717171;;
+	background-color: #717171;
+	;
 	border-radius: 50%;
 	display: inline-block;
 	transition: background-color 0.6s ease;
-  }
-  
-  .active, .dot:hover {
+}
+
+.active,
+.dot:hover {
 	background-color: black;
-  }
-  
-  /* Fading animation */
-  .fade {
+}
+
+/* Fading animation */
+.fade {
 	animation-name: fade;
 	animation-duration: 1.5s;
-  }
-  
-  @keyframes fade {
-	from {opacity: .4}
-	to {opacity: 1}
-  }
+}
+
+@keyframes fade {
+	from {
+		opacity: .4
+	}
+
+	to {
+		opacity: 1
+	}
+}
 
 
 /*--------------------*/
@@ -126,21 +141,36 @@ header .slides img{
 /*--------------------*/
 /*--------------------*/
 
-main{
-	max-width: 60vw;
-	margin:0px auto;
+main {
+	max-width: 75vw;
+	margin: 0px auto;
 	padding: 0px 20px;
 }
 
-main img{
-	max-width: 100%;
+@media (max-width:1024px) {
+	main {
+		max-width: 90vw;
+	}
 }
 
+main img {
+	max-width: 100%;
+}
+main .mainImg{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 50px 0px;
+	width: 100%;
+}
+main .mainImg img{
+	width: 100%;
+} 
 /*--------------------*/
 /*-----Accoordion-----*/
 /*--------------------*/
 
-main .accordion{
+main .accordion {
 	background-color: lightgoldenrodyellow;
 	color: black;
 	width: 100%;
@@ -149,23 +179,26 @@ main .accordion{
 	margin-top: 5px;
 	border: 1px solid black;
 	outline: none;
-	transition: 0.4s;	
+	transition: 0.4s;
 }
 
-main .accordion::after{
+main .accordion::after {
 	padding-right: 20px;
 	content: url("../img/arrow.svg");
 	transition: 0.4s;
 }
-main .active::after{
+
+main .active::after {
 
 	transform: rotate(-180deg);
-	transform-origin:40% 45%;
-	
+	transform-origin: 40% 45%;
+
 
 
 }
-main .accordion::after,main .active::after{
+
+main .accordion::after,
+main .active::after {
 	display: block;
 	float: right;
 	width: 10px;
@@ -173,10 +206,11 @@ main .accordion::after,main .active::after{
 
 }
 
-main .active, main .accordion:hover {
+main .active,
+main .accordion:hover {
 	background-color: #ccc;
 	transition: 0.5s;
-	
+
 
 }
 
@@ -184,45 +218,50 @@ main .panel {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-left: 20px;
+	padding-left: 10px;
 	background-color: white;
 	overflow: hidden;
 	max-height: 0vh;
 	transition: max-height 0.4s ease-out;
+	gap: 1vw;
 }
-main .show{
-	max-height: 60vh;
+
+main .show {
+	max-height: 65vh;
 
 }
 
-main .panel div{
+main .panel div {
 	width: 50%;
 }
-main .panel img {
 
+main .panel img {
 	height: auto;
 
+
+	
 }
 
-main p.img-txt{
+main p.img-txt {
 	font-style: italic;
 	color: lightgray;
 	margin-top: 0px;
 }
 
-main ul li{
+main ul li {
 	list-style: square;
 
 }
 
 @media (max-width:1024px) {
-	main .panel{
+	main .panel {
 		flex-direction: column;
 	}
-	main .panel div{
+
+	main .panel div {
 		width: 100%;
 	}
-	
+
 }
 
 /*--------------------*/
@@ -231,7 +270,7 @@ main ul li{
 /*--------------------*/
 /*--------------------*/
 
-footer{
+footer {
 	background-color: lightgoldenrodyellow;
 	text-align: center;
 	color: black;
@@ -239,6 +278,7 @@ footer{
 	border-top: 10px groove black;
 
 }
-.show{
+
+.show {
 	display: block;
 }
