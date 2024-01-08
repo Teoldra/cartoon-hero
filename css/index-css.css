@@ -50,6 +50,8 @@ header {
 }
 
 header .headerSlider {
+	transition: 0.75s;
+	display: flex;
 	width: auto;
 	height: auto;
 	position: relative;
@@ -58,12 +60,14 @@ header .headerSlider {
 }
 
 .slides {
-	display: none;
+	display: show;
 }
 
 header .slides img {
-	width: 100%;
-	overflow: hidden;
+	width: 100vw;
+	object-fit: cover;
+	height: 100%;
+	overflow: show;
 }
 
 .prev,
@@ -120,17 +124,16 @@ header .slides img {
 
 /* Fading animation */
 .fade {
-	animation-name: fade;
-	animation-duration: 1.5s;
+	animation: fade 1s forwards;
 }
 
 @keyframes fade {
 	from {
-		opacity: .4
+		transform: translateX(100%)
 	}
 
 	to {
-		opacity: 1
+		transform: translateX(0%)
 	}
 }
 

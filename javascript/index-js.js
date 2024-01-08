@@ -23,41 +23,35 @@ function Accordion() {
 
 function Slider() {
 
+
   let slides = $(".slides").toArray();
   let currentDot = $(".dot").toArray();
   let index = 0;
+  let slidevw = 0;
 
-  function HideSlide(){                         //Blendet alle Slides aus
-    $(".slides").hide();
+  function slideAnim(){
+    $(".headerSlider").css("transform", "translateX(-" + slidevw + "vw) ");
     $(".dot").removeClass("active");
-  }
-  function ShowSlide(){                         //Blendet Slide ein anhand des aktuellen Index 
-    $(slides[index]).show();
     $(currentDot[index]).addClass("active");
   }
-  function NextSlide(){
-    HideSlide();
-    ShowSlide();
-  }
-
-  //Einblendung des Ersten Slides bei seiten aufruf
-  ShowSlide();
-
-  //Hier Startet die Click Funktion!
 
   $(".next").click(function () {                //Click auf den Next Button
     index++;
+    slidevw +=100;
     if (index + 1 > $(".slides").length) {      //Zurücksetzen des Index wenn letztes Element Erreicht
-      index = 0
+      index = 0;
+      slidevw = 0;
     }
-    NextSlide();
+    slideAnim();    
   });
 
   $(".prev").click(function () {                //Click auf den Prev Button
     index--;
+    slidevw -= 100;
     if (index < 0) {                            //Zurücksetzen des Index wenn erstes Element Erreicht
       index = slides.length - 1;
+      slidevw = (100 * (slides.length - 1));
     }
-    NextSlide();
+    slideAnim();    
   });
 }
