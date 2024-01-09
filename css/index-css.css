@@ -53,10 +53,16 @@ header .headerSlider {
 	transition: 0.75s;
 	display: flex;
 	width: auto;
-	height: auto;
+	height: 75vh;
 	position: relative;
 	text-align: center;
 
+}
+@media (max-width: 1024px) {
+	header .headerSlider {
+		height: 40vh;
+	}
+	
 }
 
 .slides {
@@ -66,6 +72,7 @@ header .headerSlider {
 header .slides img {
 	width: 100vw;
 	object-fit: cover;
+	object-position: center top;
 	height: 100%;
 	overflow: show;
 }
@@ -74,7 +81,7 @@ header .slides img {
 .next {
 	cursor: pointer;
 	position: absolute;
-	top: clamp(10vh, 35%, 35vh);
+	top: clamp(10vh, 30%, 30vh);
 	width: auto;
 	margin-top: -22px;
 	padding: 16px;
@@ -85,7 +92,6 @@ header .slides img {
 	border-radius: 0 3px 3px 0;
 	user-select: none;
 }
-
 
 /* Position the "next button" to the right */
 .next {
@@ -109,7 +115,7 @@ header .slides img {
 	cursor: pointer;
 	height: 15px;
 	width: 15px;
-	margin: 0 2px;
+	margin: 0 5px;
 	background-color: #717171;
 	;
 	border-radius: 50%;
