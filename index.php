@@ -34,27 +34,23 @@ if (file_exists($csvSlider)) {
 } else {
 	print_r("Datei nicht gefunden!");
 }
-echo "<pre>";
 
-echo "</pre>";
 // Ausgabe des Arrays
 //echo $arrayInhalt[1]["id"];
 //echo $arrayInhalt[1]["titel"];
 //echo $arrayInhalt[1]["beschreibung"];
 
-
-
-foreach ($verzeichnisinhalt as $datei) {
-
-	$pattern = '/.*/';
+function bildID($value)
+{
+	$pattern = "/img\/slider\/slider-/";
 	$replace = "";
-	$filename = preg_replace($pattern, $replace, $datei);
-	$pattern2 = '/.jpg/';
+	$value = preg_replace($pattern, $replace, $value);
+	$pattern2 = "/.jpg/";
 	$replace2 = "";
-	$filename = preg_replace($pattern2, $replace2, $filename);
+	$value = preg_replace($pattern2, $replace2, $value);
+	return $value;
 
 }
-echo $filename;
 
 ?>
 
@@ -78,7 +74,7 @@ echo $filename;
 		<div class="headerSlider">
 			<?php foreach ($bildArray as $bild) { ?>
 				<div class="slides fade">
-				<p class="test"><?php echo $arrayInhalt[$bild]["titel"]; ?></p>
+				<p class="test"><?php echo $arrayInhalt[bildID($bild)]["titel"]; ?></p>
 					<img src="<?php echo $bild; ?>">
 				</div>
 			<?php } ?>
