@@ -64,7 +64,11 @@ header .headerSlider {
 	}
 	
 }
-
+.test{
+	position: absolute;
+	top: 50%;
+	left: 10vw;
+}
 .slides {
 	display: show;
 }

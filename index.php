@@ -16,17 +16,45 @@ foreach ($verzeichnisinhalt as $datei) {
 }
 $bildlength = count($bildArray);
 
-foreach($verzeichnisinhalt as $datei){
+$csvSlider = "img/slider/slider.csv";
+$arrayInhalt = [];
 
-    $pattern = '/\..*/';
-    $replace = "";
-    $filename = preg_replace($pattern, $replace, $datei);
-	$pattern2 = '/-[0-9]/';
+if (file_exists($csvSlider)) {
+	$csvSlider = fopen($csvSlider, "r");
+
+	while (($csvInhalt = fgetcsv($csvSlider, 1000, ";")) !== FALSE) {
+		$arrayInhalt[] = [
+			"id" => $csvInhalt[0],
+			"titel" => $csvInhalt[1],
+			"beschreibung" => $csvInhalt[2]
+		];
+	}
+
+	fclose($csvSlider);
+} else {
+	print_r("Datei nicht gefunden!");
+}
+echo "<pre>";
+
+echo "</pre>";
+// Ausgabe des Arrays
+//echo $arrayInhalt[1]["id"];
+//echo $arrayInhalt[1]["titel"];
+//echo $arrayInhalt[1]["beschreibung"];
+
+
+
+foreach ($verzeichnisinhalt as $datei) {
+
+	$pattern = '/.*/';
+	$replace = "";
+	$filename = preg_replace($pattern, $replace, $datei);
+	$pattern2 = '/.jpg/';
 	$replace2 = "";
-    $filename = preg_replace($pattern2, $replace2, $filename);
+	$filename = preg_replace($pattern2, $replace2, $filename);
 
 }
-
+echo $filename;
 
 ?>
 
@@ -46,29 +74,28 @@ foreach($verzeichnisinhalt as $datei){
 </head>
 
 <body>
-
-	<!-- Header element -->
 	<header>
 		<div class="headerSlider">
-			<?php
-			for ($i = 0; $i < $bildlength; $i++) {
-				echo
-					'<div class="slides fade">
-            <img src="' . $bildArray[$i] . '">
-          </div>';
-			}
-			?>
+			<?php foreach ($bildArray as $bild) { ?>
+				<div class="slides fade">
+				<p class="test"><?php echo $arrayInhalt[$bild]["titel"]; ?></p>
+					<img src="<?php echo $bild; ?>">
+				</div>
+			<?php } ?>
 		</div>
 		<a class="prev">&#10094;</a>
 		<a class="next">&#10095;</a>
 	</header>
+
+
+	<!-- Header element -->
+
+
 	<!-- The dots/circles -->
 	<div style="text-align:center">
-		<?php
-		for ($i = 0; $i < $bildlength; $i++) {
-			echo '<span class="dot"></span>';
-		}
-		?>
+		<?php foreach ($bildArray as $bild) { ?>
+			<span class="dot"></span>
+		<?php } ?>
 	</div>
 
 	<!-- Main element -->
