@@ -64,10 +64,20 @@ header .headerSlider {
 	}
 	
 }
-.test{
+.titelSlider{
 	position: absolute;
 	top: 50%;
 	left: 10vw;
+	font-size: 30px;
+	color: white;
+}
+
+.beschreibungSlider{
+	position: absolute;
+	top: 55%;
+	left: 10vw;
+	font-size: 20px;
+	color: white;
 }
 .slides {
 	display: show;
@@ -147,6 +157,19 @@ header .slides img {
 	}
 }
 
+.test {
+	animation: test 3s forwards;
+}
+
+@keyframes test {
+	from {
+		opacity: 0%;
+	}
+
+	to {
+		opacity: 100%;
+	}
+}
 
 /*--------------------*/
 /*--------------------*/

@@ -1,10 +1,26 @@
 <?php
 
+//Slider 
 $verzeichnis = "img/slider/";
-// Array initialisieren
 $bildArray = array();
-// Verzeichnis öffnen
 $verzeichnisinhalt = scandir($verzeichnis);
+$arrayInhalt = [];
+$csvSlider = "img/slider/slider.csv";
+
+//Accordion
+$verzeichnisAcc = "img/accordion/";
+$accArray = array();
+$verzeichnisinhaltAcc = scandir($verzeichnisAcc);
+$arrayInhaltAcc = [];
+$csvAccordion = "img/accordion/accordion.csv";
+
+//-----------------//
+//-----------------//
+//------Slider-----//
+//-----------------//
+//-----------------//
+
+//Slider Bilder Einlesen
 
 // Durch Verzeichnisinhalt iterieren
 foreach ($verzeichnisinhalt as $datei) {
@@ -14,10 +30,6 @@ foreach ($verzeichnisinhalt as $datei) {
 		$bildArray[] = $verzeichnis . $datei;
 	}
 }
-$bildlength = count($bildArray);
-
-$csvSlider = "img/slider/slider.csv";
-$arrayInhalt = [];
 
 if (file_exists($csvSlider)) {
 	$csvSlider = fopen($csvSlider, "r");
@@ -35,11 +47,6 @@ if (file_exists($csvSlider)) {
 	print_r("Datei nicht gefunden!");
 }
 
-// Ausgabe des Arrays
-//echo $arrayInhalt[1]["id"];
-//echo $arrayInhalt[1]["titel"];
-//echo $arrayInhalt[1]["beschreibung"];
-
 function bildID($value)
 {
 	$pattern = "/img\/slider\/slider-/";
@@ -49,7 +56,46 @@ function bildID($value)
 	$replace2 = "";
 	$value = preg_replace($pattern2, $replace2, $value);
 	return $value;
+}
+//-----------------//
+//-----------------//
+//----Accordion----//
+//-----------------//
+//-----------------//
 
+foreach ($verzeichnisinhaltAcc as $dateiAcc) {
+	// Nur Dateien berücksichtigen (keine Verzeichnisse)
+	if (is_file($verzeichnisAcc . $dateiAcc) && pathinfo($verzeichnisAcc . $dateiAcc, PATHINFO_EXTENSION) === 'jpg') {
+		// Pfad und Dateiname zum Array hinzufügen
+		$accArray[] = $verzeichnisAcc . $dateiAcc;
+	}
+}
+
+if (file_exists($csvAccordion)) {
+	$csvAccordion = fopen($csvAccordion, "r");
+
+	while (($csvInhaltAcc = fgetcsv($csvAccordion, 1000, ";")) !== FALSE) {
+		$arrayInhaltAcc[] = [
+			"id" => $csvInhaltAcc[0],
+			"titel" => $csvInhaltAcc[1],
+			"beschreibung" => $csvInhaltAcc[2]
+		];
+	}
+
+	fclose($csvAccordion);
+} else {
+	print_r("Datei nicht gefunden!");
+}
+
+function bildIDAcc($value)
+{
+	$pattern = "/img\/accordion\/accordion-/";
+	$replace = "";
+	$value = preg_replace($pattern, $replace, $value);
+	$pattern2 = "/.jpg/";
+	$replace2 = "";
+	$value = preg_replace($pattern2, $replace2, $value);
+	return $value;
 }
 
 ?>
@@ -74,7 +120,8 @@ function bildID($value)
 		<div class="headerSlider">
 			<?php foreach ($bildArray as $bild) { ?>
 				<div class="slides fade">
-				<p class="test"><?php echo $arrayInhalt[bildID($bild)]["titel"]; ?></p>
+				<p class="titelSlider"><?php echo $arrayInhalt[bildID($bild)]["titel"]; ?></p>
+				<p class="beschreibungSlider"><?php echo $arrayInhalt[bildID($bild)]["beschreibung"]; ?></p>
 					<img src="<?php echo $bild; ?>">
 				</div>
 			<?php } ?>
@@ -107,41 +154,18 @@ function bildID($value)
 		</div>
 
 		<!-- Accordion -->
-		<!-- Inhalt 1 -->
-		<button class="accordion">2B</button>
+		<?php foreach ($accArray as $bildAcc) { ?>
+		<button class="accordion"><?php echo $arrayInhaltAcc[bildIDAcc($bildAcc)]["titel"]; ?></button>
 		<div class="panel">
 			<div>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum voluptatum debitis ullam
-					commodi alias id magnam non hic cum. Id ducimus, optio rem deleniti ea ipsa soluta ipsum non!</p>
+			<p><?php echo $arrayInhaltAcc[bildIDAcc($bildAcc)]["beschreibung"]; ?></p>
 			</div>
 			<div class="accImg">
-				<img src="img/2b-dust-art.jpg" alt="2b-dust-art">
+			<img src="<?php echo $bildAcc; ?>">
 			</div>
 		</div>
+		<?php } ?>
 
-		<!-- Inhalt 2 -->
-		<button class="accordion">9S</button>
-		<div class="panel">
-			<div>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum voluptatum debitis ullam
-					commodi alias id magnam non hic cum. Id ducimus, optio rem deleniti ea ipsa soluta ipsum non!</p>
-			</div>
-			<div class="accImg">
-				<img src="img/9s-art.jpg" alt="2b-dust-art">
-			</div>
-		</div>
-
-		<!-- Inhalt 2 -->
-		<button class="accordion">A2</button>
-		<div class="panel">
-			<div>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum voluptatum debitis ullam
-					commodi alias id magnam non hic cum. Id ducimus, optio rem deleniti ea ipsa soluta ipsum non!</p>
-			</div>
-			<div class="accImg">
-				<img src="img/a2-art.jpg" alt="2b-dust-art">
-			</div>
-		</div>
 
 
 

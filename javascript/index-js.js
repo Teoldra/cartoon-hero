@@ -26,13 +26,21 @@ function Slider() {
 
   let slides = $(".slides").toArray();
   let currentDot = $(".dot").toArray();
+  let currentDesc = $(".titelSlider").toArray();
   let index = 0;
   let slidevw = 0;
+  $(currentDot[index]).addClass("active");
+  $(currentDesc[index]).addClass("test");
+  $(currentDesc[index]).next().addClass("test");
 
   function slideAnim(){
     $(".headerSlider").css("transform", "translateX(-" + slidevw + "vw) ");
     $(".dot").removeClass("active");
+    $(".titelSlider").removeClass("test");
+    $(".titelSlider").next().removeClass("test");
     $(currentDot[index]).addClass("active");
+    $(currentDesc[index]).addClass("test");
+    $(currentDesc[index]).next().addClass("test");
   }
 
   $(".next").click(function () {                //Click auf den Next Button
