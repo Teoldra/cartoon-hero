@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL);
+
 //Slider 
 $verzeichnis = "img/slider/";
 $bildArray = array();
@@ -47,16 +49,18 @@ if (file_exists($csvSlider)) {
 	print_r("Datei nicht gefunden!");
 }
 
-function bildID($value)
+function bildID($value, $type)
 {
-	$pattern = "/img\/slider\/slider-/";
+	if($type == "slider") {
+		$pattern = "/img\/slider\/slider-|\.jpg/";
+	} elseif($type == "accordion") {
+		$pattern = "/img\/accordion\/accordion-|\.jpg/";
+	}
 	$replace = "";
 	$value = preg_replace($pattern, $replace, $value);
-	$pattern2 = "/.jpg/";
-	$replace2 = "";
-	$value = preg_replace($pattern2, $replace2, $value);
 	return $value;
 }
+
 //-----------------//
 //-----------------//
 //----Accordion----//
@@ -87,20 +91,7 @@ if (file_exists($csvAccordion)) {
 	print_r("Datei nicht gefunden!");
 }
 
-function bildIDAcc($value)
-{
-	$pattern = "/img\/accordion\/accordion-/";
-	$replace = "";
-	$value = preg_replace($pattern, $replace, $value);
-	$pattern2 = "/.jpg/";
-	$replace2 = "";
-	$value = preg_replace($pattern2, $replace2, $value);
-	return $value;
-}
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -120,8 +111,8 @@ function bildIDAcc($value)
 		<div class="headerSlider">
 			<?php foreach ($bildArray as $bild) { ?>
 				<div class="slides fade">
-				<p class="titelSlider"><?php echo $arrayInhalt[bildID($bild)]["titel"]; ?></p>
-				<p class="beschreibungSlider"><?php echo $arrayInhalt[bildID($bild)]["beschreibung"]; ?></p>
+				<p class="titelSlider"><?= $arrayInhalt[bildID($bild, "slider")]["titel"]; ?></p>
+				<p class="beschreibungSlider"><?= $arrayInhalt[bildID($bild, "slider")]["beschreibung"]; ?></p>
 					<img src="<?php echo $bild; ?>">
 				</div>
 			<?php } ?>
@@ -155,10 +146,10 @@ function bildIDAcc($value)
 
 		<!-- Accordion -->
 		<?php foreach ($accArray as $bildAcc) { ?>
-		<button class="accordion"><?php echo $arrayInhaltAcc[bildIDAcc($bildAcc)]["titel"]; ?></button>
+		<button class="accordion"><?php echo $arrayInhaltAcc[bildID($bildAcc, "accordion")]["titel"]; ?></button>
 		<div class="panel">
 			<div>
-			<p><?php echo $arrayInhaltAcc[bildIDAcc($bildAcc)]["beschreibung"]; ?></p>
+			<p><?php echo $arrayInhaltAcc[bildID($bildAcc, "accordion")]["beschreibung"]; ?></p>
 			</div>
 			<div class="accImg">
 			<img src="<?php echo $bildAcc; ?>">
